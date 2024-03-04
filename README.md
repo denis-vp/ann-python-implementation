@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![pygame](https://img.shields.io/badge/pygame-2.0%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-MIT-purple)
 
 This repository contains a Python implementation of a neural network designed from scratch for recognizing handwritten
 digits. The neural network is trained on the MNIST dataset, a widely-used benchmark dataset for image classification
