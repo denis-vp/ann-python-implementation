@@ -25,12 +25,12 @@ neural networks and how they can be applied to real-world tasks like image recog
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your_username/neural-network-handwritten-digit-recognition.git
+    git clone https://github.com/your_username/ann-digit-recognition.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd neural-network-handwritten-digit-recognition
+    cd ann-digit-recognition
     ```
 
 3. Install required dependencies (if any).
