@@ -34,9 +34,9 @@ class Layer:
         self.biases_gradients: np.ndarray[num_neuron_out, np.float64]
         self.biases_velocities: np.ndarray[num_neuron_out, np.float64]
 
-        self._initialize_parameters()
+        self.initialize_parameters()
 
-    def _initialize_parameters(self):
+    def initialize_parameters(self):
         self.weights = np.random.rand(self.num_neuron_out, self.num_neuron_in)
         if isinstance(self.activation_function, ReLU):
             # He initialization
@@ -66,7 +66,7 @@ class Layer:
 
         # Apply the activation function
         outputs = self.activation_function(outputs)
-        outputs += 1e-10  # Add a small constant to prevent underflow / log(0) in the loss function
+        outputs += 1e-10  # Add a small value to avoid underflow
 
         return outputs
 
@@ -88,7 +88,7 @@ class Layer:
 
         # Apply the activation function
         outputs = self.activation_function(outputs)
-        outputs += 1e-10  # Add a small constant to prevent underflow / log(0) in the loss function
+        outputs += 1e-10  # Add a small value to avoid underflow
         learn_data.activations = outputs.copy()
 
         return outputs

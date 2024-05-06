@@ -68,7 +68,8 @@ class LeakyReLU(ActivationFunction):
 
 class Softmax(ActivationFunction):
     def __call__(self, x: np.ndarray) -> np.ndarray:
-        exps = np.exp(x - np.max(x))
+        shiftx = x - np.max(x)
+        exps = np.exp(shiftx)
         return exps / np.sum(exps)
 
     def derivative(self, x: np.ndarray) -> np.ndarray:

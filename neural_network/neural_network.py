@@ -22,6 +22,13 @@ class NeuralNetwork:
                                  activation_functions[i])
             self.layers.append(hidden_layer)
 
+    def reset(self):
+        """
+        Reset the weights and biases of the network.
+        """
+        for layer in self.layers:
+            layer.initialize_parameters()
+
     def forward(self, inputs: np.ndarray, learn: bool = True) -> np.ndarray:
         """
         Forward pass through the network.
