@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import pygame
 
-from gui.button import Button
+from gui.pygame_gui.button import Button
 
 # Window settings
 WINDOW_HEIGHT = 700

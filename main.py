@@ -1,5 +1,10 @@
-from gui.mainmenu import MainMenu
+from gui.pygame_gui.drawingboard import DrawingBoard
+
+
+def open_drawing_board():
+    drawing_board = DrawingBoard()
+    drawing_board.run()
+
 
 if __name__ == '__main__':
-    main_menu = MainMenu()
-    main_menu.run()
+    open_drawing_board()
