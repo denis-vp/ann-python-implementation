@@ -5,8 +5,6 @@
 
 This repository contains a Python implementation of a neural network from scratch utilizing the NumPy library.  
 The implementation is tested on various datasets from Kaggle, such as the mushroom and iris datasets.  
-https://www.kaggle.com/datasets/prishasawhney/mushroom-dataset/data  
-https://www.kaggle.com/datasets/vikrishnan/iris-dataset
 
 ## Overview
 
