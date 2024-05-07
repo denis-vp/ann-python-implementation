@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 
 from neural_network.functions.activation_functions import ActivationFunction
@@ -96,3 +98,22 @@ class NeuralNetwork:
         self.learn_data = [LayerLearnData(layer.num_neuron_out) for layer in self.layers]
         for layer in self.layers:
             layer.zero_grad()
+
+    def save_model(self, path: str):
+        """
+        Save the model to a file.
+        :param path: Path to the file, str
+        """
+        with open(path, 'wb') as file:
+            pickle.dump(self, file)
+
+    def load_model(self, path: str):
+        """
+        Load the model from a file.
+        :param path: Path to the file, str
+        """
+        with open(path, 'rb') as file:
+            model = pickle.load(file)
+            self.layers = model.layers
+            self.learn_data = model.learn_data
+            self.loss_function = model.loss_function
