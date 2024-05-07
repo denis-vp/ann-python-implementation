@@ -23,7 +23,7 @@ class LossFunction(ABC):
         pass
 
 
-class MSE(LossFunction):
+class MSELoss(LossFunction):
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return np.mean((y_true - y_pred) ** 2)
 
@@ -31,15 +31,19 @@ class MSE(LossFunction):
         return -2 * (y_true - y_pred)
 
 
-class BCE(LossFunction):
-    def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
-        return -np.sum(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
+class BCELoss(LossFunction):
+    def __call__(self, y_true: float, y_pred: float) -> float:
+        # Avoid log(0) by adding a small value
+        y_pred = np.clip(y_pred, 1e-15, 1 - 1e-15)
+        return -1 * y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred)
 
-    def derivative(self, y_true: np.ndarray, y_pred: np.ndarray) -> np.ndarray:
+    def derivative(self, y_true: float, y_pred: float) -> np.ndarray:
+        # Avoid division by zero
+        y_pred = np.clip(y_pred, 1e-15, 1 - 1e-15)
         return (y_pred - y_true) / (y_pred * (1 - y_pred))
 
 
-class CrossEntropy(LossFunction):
+class CrossEntropyLoss(LossFunction):
     def __call__(self, y_true: np.ndarray, y_pred: np.ndarray) -> float:
         return -np.sum(y_true * np.log(y_pred))
 

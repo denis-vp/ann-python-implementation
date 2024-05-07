@@ -33,6 +33,8 @@ class Threshold(ActivationFunction):
 
 class Sigmoid(ActivationFunction):
     def __call__(self, x: np.ndarray) -> np.ndarray:
+        # Avoid overflow
+        x = np.clip(x, -500, 500)
         return 1 / (1 + np.exp(-x))
 
     def derivative(self, x: np.ndarray) -> np.ndarray:
@@ -41,10 +43,11 @@ class Sigmoid(ActivationFunction):
 
 class Tanh(ActivationFunction):
     def __call__(self, x: np.ndarray) -> np.ndarray:
-        # e_pos = np.exp(x)
-        # e_neg = np.exp(-x)
-        # return (e_pos - e_neg) / (e_pos + e_neg)
-        return np.tanh(x)
+        # Avoid overflow
+        x = np.clip(x, -500, 500)
+        e_pos = np.exp(x)
+        e_neg = np.exp(-x)
+        return (e_pos - e_neg) / (e_pos + e_neg)
 
     def derivative(self, x: np.ndarray) -> np.ndarray:
         return 1 - self(x) ** 2

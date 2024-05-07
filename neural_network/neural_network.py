@@ -8,21 +8,21 @@ from neural_network.layer import LayerLearnData, Layer
 
 
 class NeuralNetwork:
-    def __init__(self, hidden_layer_sizes: list[int], activation_functions: list[ActivationFunction],
+    def __init__(self, layer_sizes: list[int], activation_functions: list[ActivationFunction],
                  loss_function: LossFunction):
 
         self.loss_function = loss_function
 
         self.layers = []
-        self._initialize_layers(hidden_layer_sizes, activation_functions)
+        self._initialize_layers(layer_sizes, activation_functions)
 
         self.learn_data = [LayerLearnData(layer.num_neuron_out) for layer in self.layers]
 
-    def _initialize_layers(self, hidden_layer_sizes: list[int], activation_functions: list[callable]):
-        for i in range(len(hidden_layer_sizes) - 1):
-            hidden_layer = Layer(hidden_layer_sizes[i], hidden_layer_sizes[i + 1],
-                                 activation_functions[i])
-            self.layers.append(hidden_layer)
+    def _initialize_layers(self, layer_sizes: list[int], activation_functions: list[callable]):
+        for i in range(len(layer_sizes) - 1):
+            layer = Layer(layer_sizes[i], layer_sizes[i + 1],
+                          activation_functions[i])
+            self.layers.append(layer)
 
     def reset(self):
         """
